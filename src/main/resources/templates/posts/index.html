@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+    <div>
+        <h1>Hello Spring Post CRUD</h1>
+        <p>post 기능</p>
+        <p>
+            <a href="/posts/create">글 작성</a>
+        </p>
+    </div>
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>이름</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="post : ${posts}">
+                <td th:text="${post.id}"></td>
+                <td th:text="${post.title}"></td>
+                <td th:text="${post.content}"></td>
+                <td>
+                    <a th:href="@{posts/update/{post_id}/(post.id = ${post.id})}"><button>수정하기</button></a>
+                </td>
+                <td>
+                    <form th:action="@{posts/delete/{post_id}/(post.id = ${post.id})}" method="POST">
+                        <input type="submit" value="삭제하기"/>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <a href="/">돌아가기</a>
+</div> <!-- /container -->
+</body>
+</html>
