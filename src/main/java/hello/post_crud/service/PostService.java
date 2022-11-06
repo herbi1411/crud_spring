@@ -2,6 +2,7 @@ package hello.post_crud.service;
 
 import hello.post_crud.domain.Post;
 import hello.post_crud.dto.NewPostRequest;
+import hello.post_crud.dto.PostElementResponse;
 import hello.post_crud.dto.PostsResponse;
 import hello.post_crud.repository.PostRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -22,11 +23,11 @@ public class PostService {
     }
 
     @Transactional
-    public Long addPost(NewPostRequest newPostRequest) {
+    public PostElementResponse addPost(NewPostRequest newPostRequest) {
         Post savedPost = createPost(newPostRequest);
         postRepository.save(savedPost);
         System.out.println("savedPost = " + savedPost);
-        return savedPost.getId();
+        return PostElementResponse.from(savedPost);
     }
 
     private Post createPost(NewPostRequest newPostRequest) {

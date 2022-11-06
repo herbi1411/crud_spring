@@ -1,7 +1,6 @@
 package hello.post_crud.controller;
 
 
-import hello.post_crud.domain.Post;
 import hello.post_crud.dto.NewPostRequest;
 import hello.post_crud.dto.PostElementResponse;
 import hello.post_crud.dto.PostsResponse;
@@ -14,9 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
-@Controller
+//@Controller
 @RequiredArgsConstructor
-public class PostController {
+public class PostHtmlController {
     private final PostService postService;
 
     @GetMapping("/posts")
